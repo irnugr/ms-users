@@ -41,7 +41,7 @@ pub async fn get_user_list(pagination: web::Query<PaginationParams>) -> impl Res
 
     // Query to get the total number of users
     let total_items: i64 = client
-        .query_one("SELECT COUNT(*) FROM public.user", &[])
+        .query_one("SELECT COUNT(1) FROM public.user", &[])
         .await
         .expect("Failed to execute count query")
         .get(0);
